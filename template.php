@@ -2,9 +2,9 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Blog de Jean Forteroche</title>
+    <title><?php $title ?></title>
 </head>
 <body>
-
+    <?= $content ?>
 </body>
 </html>
