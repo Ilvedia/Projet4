@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title><?php $title ?></title>
+    <meta charset="utf-8" />
+    <title><?= $title ?></title>
     <link href="public/css/style.css" rel="stylesheet" />
 </head>
+
 <body>
     <?= $content ?>
 </body>

@@ -1,33 +1,45 @@
-<?php $title = 'Mon blog'; ?>
+<?php $title = htmlspecialchars($post['title']); ?>
 
 <?php ob_start(); ?>
-    <h1>Découvrez mon nouveau roman</h1>
-    <p>Commentaires du chapitre</p>
+<h1>Mon super blog !</h1>
+<p><a href="index.php">Retour à la liste des billets</a></p>
 
-<p><a href="../../index.php">Retour à la liste des chapitres</a> </p>
-
-<div class="chapters">
+<div id="chapters">
     <h3>
-        <?= htmlspecialchars($posts['title']) ?>
-        <em> le <?= $posts['creation_date_fr'] ?></em>
+        <?= htmlspecialchars($post['title']) ?>
+        <em>le <?= $post['creation_date_fr'] ?></em>
     </h3>
 
     <p>
-        <?= nl2br(htmlspecialchars($posts['content'])) ?>
+        <?= nl2br(htmlspecialchars($post['content'])) ?>
     </p>
 </div>
 
 <h2>Commentaires</h2>
 
-<?php
-    while ($comment = $comments->fetch()) {
-        ?>
-        <p><strong><?= htmlspecialchars($comment['author']) ?></strong> le <?= $comment['comment_date_fr'] ?></p>
-        <p><?= nl2br(htmlspecialchars($comment['comment'])) ?></p>
-        <?php
-    }
-    $posts->closeCursor();
-    $content = ob_get_clean();
+<form action="index.php?action=addComment&amp;id=<?= $post['id'] ?>" method="post">
+    <div>
+        <label for="author">Auteur</label><br />
+        <input type="text" id="author" name="author" />
+    </div>
+    <div>
+        <label for="comment">Commentaire</label><br />
+        <textarea id="comment" name="comment"></textarea>
+    </div>
+    <div>
+        <input type="submit" />
+    </div>
+</form>
 
-    require('template.php');
+<?php
+while ($comment = $comments->fetch())
+{
+    ?>
+    <p><strong><?= htmlspecialchars($comment['member_id']) ?></strong> le <?= $comment['comment_date_fr'] ?></p>
+    <p><?= nl2br(htmlspecialchars($comment['comment'])) ?></p>
+    <?php
+}
 ?>
+<?php $content = ob_get_clean(); ?>
+
+<?php require('template.php'); ?>
