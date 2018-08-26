@@ -27,11 +27,28 @@ try {
                 throw new Exception('Aucun identifiant de billet envoyé');
             }
         }
+        elseif ($_GET['action'] == 'creationUser') {
+            require('view\frontend\newAccountView.php');
+        }
+        //Creation d'un nouveau membre
+        elseif ($_GET['action'] == 'newUser') {
+            if (isset($_POST['pseudo']) && !empty($_POST['pseudo'])
+                && isset($_POST['email']) && !empty($_POST['email'])
+                && isset($_POST['pass']) && !empty($_POST['pass'])
+                && isset($_POST['pass2']) && !empty($_POST['pass2']))
+            {
+                addMember($_POST['pseudo'], $_POST['email'], $_POST['pass'], $_POST['pass2']  );
+            }else {
+                throw new Exception('Tous les champs ne sont pas remplis');
+            }
+        }
     }
     else {
         listPosts();
     }
+
 }
 catch(Exception $e) {
     echo 'Erreur : ' . $e->getMessage();
 }
+

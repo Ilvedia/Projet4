@@ -3,7 +3,7 @@
 // Chargement des classes
 require_once('model/PostManager.php');
 require_once('model/CommentManager.php');
-require_once('model/Registration.php');
+require_once('model/NewMemberManager.php');
 
 function listPosts()
 {
@@ -21,7 +21,7 @@ function post()
     $post = $postManager->getPost($_GET['id']);
     $comments = $commentManager->getComments($_GET['id']);
 
-    require('view/frontend/postView.php');
+    require('../view/frontend/postView.php');
 }
 
 function addComment($postId, $memberId, $comment)
@@ -68,6 +68,6 @@ function addMember($pseudo, $email, $pass, $pass2)
     }
     catch(Exception $e){
         $info = $e->getMessage();
-        require('view/frontend/newAccountView.php');
+        require('../view/frontend/newAccountView.php');
     }
 }
