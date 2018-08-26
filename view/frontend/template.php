@@ -7,7 +7,7 @@
 </head>
 <header>
     <form method="link" action="view/frontend/connexion.php"> <input type="submit" value="Connexion"></form>
-    <form method="link" action="view/frontend/inscription.php"> <input type="submit" value="Inscription"></form>
+    <form method="link" action="view/frontend/newAccountView.php"> <input type="submit" value="Inscription"></form>
 </header>
 <body>
     <?= $content ?>
