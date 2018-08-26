@@ -3,6 +3,7 @@
 // Chargement des classes
 require_once('model/PostManager.php');
 require_once('model/CommentManager.php');
+require_once('model/Registration.php');
 
 function listPosts()
 {
@@ -34,5 +35,39 @@ function addComment($postId, $memberId, $comment)
     }
     else {
         header('Location: index.php?action=post&id=' . $postId);
+    }
+}
+
+function addMember($pseudo, $email, $pass, $pass2)
+{
+    try
+    {
+        $userManager = new UserManager();
+        //Vérification de l'existance ou non du pseudo dans la bdd et verification sur les champs du formulaire
+        $checkMember = $userManager->checkPseudo($pseudo);
+        if(!$checkMember){
+            if(preg_match('#[a-zA-Z0-9_]#', $pseudo)){
+                if($pass == $pass2){
+                    if(preg_match(" /^[^\W][a-zA-Z0-9_]+(\.[a-zA-Z0-9_]+)*\@[a-zA-Z0-9_]+(\.[a-zA-Z0-9_]+)*\.[a-zA-Z]{2,4}$/ ", $email)){
+                        $pass_hash = password_hash($pass, PASSWORD_DEFAULT);
+                        //envoi au modele pour insertion dans BDD
+                        $push = $userManager->pushMember($pseudo, $pass_hash, $email);
+                        throw new Exception('Votre compte a été créé avec succès');
+                    }else{
+                        throw new Exception('veuillez vérifier votre adresse email');
+                    }
+                }else{
+                    throw new Exception('Les mots de passe ne correspondent pas');
+                }
+            }else{
+                throw new Exception('Un ou plusieurs caractères non autorisé dans le mot de passe');
+            }
+        }else{
+            throw new Exception('Ce pseudo est déjà utilisé');
+        }
+    }
+    catch(Exception $e){
+        $info = $e->getMessage();
+        require('view/frontend/inscription.php');
     }
 }

@@ -55,6 +55,8 @@ h1, h3
 #chapters
 {
     width: 70%;
+    height: 200px;
+    overflow: auto;
     margin: auto;
     text-align: justify;
     background-color: wheat;
