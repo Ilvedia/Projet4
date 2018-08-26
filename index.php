@@ -49,6 +49,17 @@ try {
 
 }
 catch(Exception $e) {
-    echo 'Erreur : ' . $e->getMessage();
+    ob_start();
+    ?>
+
+        <div id="errorPage">
+            <p><?php  echo 'Erreur : ' . $e->getMessage(); ?></p>
+            <p>Retour à <a href="index.php">l'accueil</a></p>
+        </div>
+
+    <?php
+    $content = ob_get_clean();
+    require('view/frontend/template.php');
 }
+?>
 

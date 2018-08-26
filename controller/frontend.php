@@ -1,16 +1,16 @@
 <?php
 
 // Chargement des classes
-require_once('model/PostManager.php');
-require_once('model/CommentManager.php');
-require_once('model/NewMemberManager.php');
+require_once('model\PostManager.php');
+require_once('model\CommentManager.php');
+require_once('model\NewMemberManager.php');
 
 function listPosts()
 {
     $postManager = new PostManager(); // Création d'un objet
     $posts = $postManager->getPosts(); // Appel d'une fonction de cet objet
 
-    require('view/frontend/listPostsView.php');
+    require('view\frontend\listPostsView.php');
 }
 
 function post()
@@ -21,7 +21,7 @@ function post()
     $post = $postManager->getPost($_GET['id']);
     $comments = $commentManager->getComments($_GET['id']);
 
-    require('../view/frontend/postView.php');
+    require('view\frontend\postView.php');
 }
 
 function addComment($postId, $memberId, $comment)
