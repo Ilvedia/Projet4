@@ -15,7 +15,7 @@
     </div>
     <div>
         <label for="pass2">Retapez votre mot de passe</label>
-        <input type="password" name="pass"/>
+        <input type="password" name="pass2"/>
     </div>
     <div>
         <label for="email">Adresse email</label>
@@ -28,5 +28,6 @@
 
 <?php
 $content = ob_get_clean();
+//var_dump($content);
 
 require('template.php'); ?>

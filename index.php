@@ -31,7 +31,7 @@ try {
             require('view\frontend\newAccountView.php');
         }
         //Creation d'un nouveau membre
-        elseif ($_GET['action'] == 'newUser') {
+        elseif ($_GET['action'] == 'addMember') {
             if (isset($_POST['pseudo']) && !empty($_POST['pseudo'])
                 && isset($_POST['email']) && !empty($_POST['email'])
                 && isset($_POST['pass']) && !empty($_POST['pass'])

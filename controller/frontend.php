@@ -68,6 +68,6 @@ function addMember($pseudo, $email, $pass, $pass2)
     }
     catch(Exception $e){
         $info = $e->getMessage();
-        require('../view/frontend/newAccountView.php');
+        require('view/frontend/newAccountView.php');
     }
 }
