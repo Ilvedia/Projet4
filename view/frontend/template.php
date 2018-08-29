@@ -6,8 +6,8 @@
     <link href="public/css/style.css" rel="stylesheet" />
 </head>
 <header>
+    <?php include("include/authArea.php"); ?>
     <?php include("include/login.php");?>
-    <form method="link" action="view/frontend/newAccountView.php"> <input type="submit" value="Inscription"></form>
 </header>
 <body>
     <?= $content ?>

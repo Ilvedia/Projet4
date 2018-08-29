@@ -5,7 +5,7 @@ require_once('model\PostManager.php');
 require_once('model\CommentManager.php');
 require_once('model\NewMemberManager.php');
 require_once('model\AuthManager.php');
-
+session_start();
 function listPosts()
 {
     $postManager = new PostManager(); // Création d'un objet
@@ -117,4 +117,10 @@ function addMember($pseudo, $email, $pass, $pass2)
         $info = $e->getMessage();
         require('view/frontend/newAccountView.php');
     }
+}
+
+function logout()
+{
+    session_destroy ();
+    header('location:index.php');
 }

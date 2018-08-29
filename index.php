@@ -55,6 +55,18 @@ try {
                 throw new Exception('Tous les champs ne sont pas remplis');
             }
         }
+        //Acces a la zone d'administration
+        elseif($_GET['action'] == 'admin'){
+            if(isset($_SESSION['userLevel']) && $_SESSION['userLevel'] == 'admin'){
+                require('view/backend/adminPanelView.php');
+            }else{
+                throw new Exception($accesdenied);
+            }
+        }
+        //logout membre
+        elseif ($_GET['action'] == 'logout'){
+            logout();
+        }
     }
     else {
         listPosts();
@@ -74,5 +86,5 @@ catch(Exception $e) {
     $content = ob_get_clean();
     require('view/frontend/template.php');
 }
-?>
+
 
