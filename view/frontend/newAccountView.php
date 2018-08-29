@@ -28,6 +28,5 @@
 
 <?php
 $content = ob_get_clean();
-//var_dump($content);
 
 require('template.php'); ?>

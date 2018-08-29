@@ -4,6 +4,7 @@
 require_once('model\PostManager.php');
 require_once('model\CommentManager.php');
 require_once('model\NewMemberManager.php');
+require_once('model\AuthManager.php');
 
 function listPosts()
 {
@@ -35,6 +36,52 @@ function addComment($postId, $memberId, $comment)
     }
     else {
         header('Location: index.php?action=post&id=' . $postId);
+    }
+}
+
+//VERIFICATION DE L'EXISTENCE D'UN MEMBRE EN BDD
+function verifyMember($userPass, $userPseudo)
+{
+    $authManager = new AuthManager();
+    $member = $authManager->getMember($userPseudo);
+    //comparaison du mdp saisie avec le mdp hash de la bdd
+    $isPasswordCorrect = password_verify($userPass, $member['pass']);
+    //Si $member=false le membre n'est pas existant en bdd
+    try{
+        if (!$member)
+        {
+            throw new Exception('Mauvais utilisateur ou mot de passe!');
+        }
+        else
+            //Le membre existe 2 possibilité le mdp correspond
+        {
+            if ($isPasswordCorrect) {
+                $_SESSION['id'] = $member['id'];
+                $_SESSION['pseudo'] = $member['pseudo'];
+                $_SESSION['pass'] = $member['pass'];
+                $_SESSION['email'] = $member['email'];
+                $_SESSION['userLevel'] = $member['userLevel'];
+                //on redirige vers la page d'accueil qui prendra en compte les variable de session
+                header('location:index.php');
+            }
+            //Le mdp ne correspond pas
+            else {
+                throw new Exception('Mauvais utilisateur ou mot de passe!');
+            }
+        }
+    }
+    catch(Exception $e){
+        $authInfo = $e->getMessage();
+        ob_start();
+        ?>
+        <div id="wrongPass">
+            <p><?php  echo 'Erreur : ' . $e->getMessage(); ?></p>
+            <?php include('include/login.php');?>
+            <p>Pas de compte ? <a href="index.php?action=creationUser">Créer un compte</a></p>
+        </div>
+        <?php
+        $content = ob_get_clean();
+        require('view/frontend/template.php');
     }
 }
 

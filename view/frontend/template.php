@@ -6,7 +6,7 @@
     <link href="public/css/style.css" rel="stylesheet" />
 </head>
 <header>
-    <form method="link" action="view/frontend/connexion.php"> <input type="submit" value="Connexion"></form>
+    <?php include("include/login.php");?>
     <form method="link" action="view/frontend/newAccountView.php"> <input type="submit" value="Inscription"></form>
 </header>
 <body>

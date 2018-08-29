@@ -30,6 +30,19 @@ try {
         elseif ($_GET['action'] == 'creationUser') {
             require('view\frontend\newAccountView.php');
         }
+        //Login d'un membre existant
+        elseif ($_GET['action'] == 'login'){
+            if (isset($_POST['userPseudo']) && !empty($_POST['userPseudo']) && isset($_POST['userPass']) && !empty($_POST['userPass']))
+            {
+                verifyMember($_POST['userPass'], $_POST['userPseudo']);
+            }else{
+                throw new Exception('Tous les champs ne sont pas remplis');
+            }
+        }
+        //redirection vers la View de creation de membre
+        elseif ($_GET['action'] == 'creationUser') {
+            require('view/frontend/newAcountView.php');
+        }
         //Creation d'un nouveau membre
         elseif ($_GET['action'] == 'addMember') {
             if (isset($_POST['pseudo']) && !empty($_POST['pseudo'])
