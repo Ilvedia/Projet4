@@ -1,6 +1,7 @@
 <?php
 require('controller/frontend.php');
 
+$accesdenied = 'Vous tentez d\'accéder à un espace réservé aux administrateurs !';
 try {
     if (isset($_GET['action'])) {
         if ($_GET['action'] == 'listPosts') {

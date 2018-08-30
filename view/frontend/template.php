@@ -6,6 +6,7 @@
     <link href="public/css/style.css" rel="stylesheet" />
 </head>
 <header>
+    <?php include("include/menu.php"); ?>
     <?php include("include/authArea.php"); ?>
     <?php include("include/login.php");?>
 </header>
