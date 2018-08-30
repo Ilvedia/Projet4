@@ -13,8 +13,8 @@ if (isset($_SESSION['pseudo']))
     <p><a href="index.php?action=logout">Se déconnecter</a></p>
     <?php
 }
-else{
+/*else{
     //Si pas de variable de session on affiche la creation de compte et le form de login
     include('login.php');
     include('accountCreation.php');
-}
+}*/
