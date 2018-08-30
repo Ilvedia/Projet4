@@ -9,25 +9,26 @@
             <th>Chapitres</th>
         </tr>
         <tr>
-            <td>Liste des chapitres</td>
-            <td>Ajout d'un chapitre</td>
-            <td>Modification d'un chapitre</td>
-            <td>Suppression d'un chapitre</td>
+            <td><a href="index.php?action=listPosts">Liste des chapitres</a></td>
+            <td><a href="index.php?action=newPost">Ajout d'un chapitre</a></td>
+            <td><a href="index.php?action=editPost">Modification d'un chapitre</a></td>
+            <td><a href="index.php?action=deletePost">Suppression d'un chapitre</a></td>
         </tr>
         <tr>
             <th>Membres</th>
         </tr>
         <tr>
-            <td>Liste des membres</td>
-            <td>Modification d'un membre</td>
-            <td>Suppression d'un membre</td>
+            <td><a href="index.php?action=listUsers">Liste des membres</a></td>
+            <td><a href="index.php?action=editUser">Modification d'un membre</a></td>
+            <td><a href="index.php?action=deleteUser">Suppression d'un membre</a></td>
         </tr>
         <tr>
             <th>Commentaires</th>
         </tr>
         <tr>
-            <td>Liste des commentaires</td>
-            <td>Suppression d'un commentaire</td>
+            <td><a href="index.php?action=listComments">Liste des commentaires</a></td>
+            <td><a href="index.php?action=addComment">Ajouter un commentaire</a></td>
+            <td><a href="index.php?action=deleteComment">Suppression d'un commentaire</a></td>
         </tr>
     </table>
 

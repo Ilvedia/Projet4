@@ -1,5 +1,6 @@
 <?php
 require('controller/frontend.php');
+require('controller/backend.php');
 
 $accesdenied = 'Vous tentez d\'accéder à un espace réservé aux administrateurs !';
 try {

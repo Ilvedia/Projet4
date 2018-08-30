@@ -6,6 +6,7 @@
     <link href="public/css/style.css" rel="stylesheet" />
 </head>
 <body>
+<?php include("include/menu.php"); ?>
 <?= $content ?>
 </body>
 </html>
