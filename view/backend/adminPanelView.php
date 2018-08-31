@@ -9,29 +9,23 @@
             <th>Chapitres</th>
         </tr>
         <tr>
-            <td><a href="index.php?action=listPosts">Liste des chapitres</a></td>
-            <td><a href="index.php?action=newPost">Ajout d'un chapitre</a></td>
-            <td><a href="index.php?action=editPost">Modification d'un chapitre</a></td>
-            <td><a href="index.php?action=deletePost">Suppression d'un chapitre</a></td>
+            <td><a href="index.php?action=writeNewPost">Ajout d'un chapitre</a></td>
+            <td><a href="index.php?action=managePosts">Edition / Suppression d'un chapitre</a></td>
         </tr>
         <tr>
             <th>Membres</th>
         </tr>
         <tr>
-            <td><a href="index.php?action=listUsers">Liste des membres</a></td>
-            <td><a href="index.php?action=editUser">Modification d'un membre</a></td>
-            <td><a href="index.php?action=deleteUser">Suppression d'un membre</a></td>
+            <td><a href="index.php?action=manageUser">Gestion des membres</a></td>
         </tr>
         <tr>
             <th>Commentaires</th>
         </tr>
         <tr>
-            <td><a href="index.php?action=listComments">Liste des commentaires</a></td>
-            <td><a href="index.php?action=addComment">Ajouter un commentaire</a></td>
-            <td><a href="index.php?action=deleteComment">Suppression d'un commentaire</a></td>
+            <td><a href="index.php?action=manageComments">Gestion des commentaires</a></td>
         </tr>
     </table>
 
 <?php $content = ob_get_clean(); ?>
 
-<?php require('template.php'); ?>
+<?php require('view/backend/template.php'); ?>

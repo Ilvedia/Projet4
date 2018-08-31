@@ -65,6 +65,36 @@ try {
                 throw new Exception($accesdenied);
             }
         }
+        //vers la page d'ecriture d'un article
+        elseif($_GET['action'] == 'writeNewPost'){
+            if(isset($_SESSION['userLevel']) && $_SESSION['userLevel'] == 'admin'){
+                require('view/backend/newPostView.php');
+            }else{
+                throw new Exception($accesdenied);
+            }
+        }
+        //Ecrire un nouvel article depuis la zone admin
+        elseif($_GET['action'] == 'newPost'){
+            if (!empty($_POST['content'])&& !empty($_POST['title'])){
+                newPost($_POST['title'], $_POST['content']);
+            }else {
+                throw new Exception('Tous les champs ne sont pas remplis');
+            }
+        }
+        //modification d'un chapitre
+        elseif ($_GET['action'] == 'managePosts'){
+            if (isset($_GET['id']) && $_GET['id'] > 0) {
+                if (!empty($_POST['title']) && !empty($_POST['content'])) {
+                    updatePost($_GET['id'], $_POST['title'], $_POST['content']);
+                }
+                else {
+                    throw new Exception('Tous les champs ne sont pas remplis !');
+                }
+            }
+            else {
+                throw new Exception('Aucun identifiant de chapitre envoyé');
+            }
+        }
         //logout membre
         elseif ($_GET['action'] == 'logout'){
             logout();

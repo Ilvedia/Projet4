@@ -2,9 +2,8 @@
 
 <?php ob_start(); ?>
 <h1>Création d'un nouveau chapitre</h1>
-<p><a href="../../index.php?action=admin">Retour à la page d'administration</a></p>
 
-<form action="../../index.php?action=newPost" method="post">
+<form action="index.php?action=newPost" method="post">
     <div>
         <label for="title">Titre</label>
         <input type="text" id="title" name="title" />
@@ -21,4 +20,4 @@
 <?php
 $content = ob_get_clean();
 
-require('template.php'); ?>
+require('view/backend/template.php'); ?>
