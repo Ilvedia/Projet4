@@ -2,7 +2,7 @@
 require('controller/frontend.php');
 require('controller/backend.php');
 
-$accesdenied = 'Vous tentez d\'accéder à un espace réservé aux administrateurs !';
+$accessdenied = 'Vous tentez d\'accéder à un espace réservé aux administrateurs !';
 try {
     if (isset($_GET['action'])) {
         if ($_GET['action'] == 'listPosts') {
@@ -62,7 +62,7 @@ try {
             if(isset($_SESSION['userLevel']) && $_SESSION['userLevel'] == 'admin'){
                 require('view/backend/adminPanelView.php');
             }else{
-                throw new Exception($accesdenied);
+                throw new Exception($accessdenied);
             }
         }
         //vers la page d'ecriture d'un article
@@ -70,7 +70,7 @@ try {
             if(isset($_SESSION['userLevel']) && $_SESSION['userLevel'] == 'admin'){
                 require('view/backend/newPostView.php');
             }else{
-                throw new Exception($accesdenied);
+                throw new Exception($accessdenied);
             }
         }
         //Ecrire un nouvel article depuis la zone admin
@@ -85,7 +85,7 @@ try {
         elseif ($_GET['action'] == 'managePosts'){
             if (isset($_GET['id']) && $_GET['id'] > 0) {
                 if (!empty($_POST['title']) && !empty($_POST['content'])) {
-                    updatePost($_GET['id'], $_POST['title'], $_POST['content']);
+                    editPost($_GET['id'], $_POST['title'], $_POST['content']);
                 }
                 else {
                     throw new Exception('Tous les champs ne sont pas remplis !');
