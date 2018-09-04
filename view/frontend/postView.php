@@ -19,8 +19,8 @@
 
     <form action="index.php?action=addComment&amp;id=<?= $post['id'] ?>" method="post">
         <div>
-            <label for="author">Auteur</label><br />
-            <input type="text" id="author" name="author" />
+            <label for="pseudo">Auteur</label><br />
+            <input type="text" id="pseudo" name="pseudo" />
         </div>
         <div>
             <label for="comment">Commentaire</label><br />

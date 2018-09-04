@@ -6,6 +6,7 @@ require_once('model/CommentManager.php');
 require_once('model/NewMemberManager.php');
 require_once('model/AuthManager.php');
 session_start();
+
 function listPosts()
 {
     $postManager = new PostManager(); // Création d'un objet
@@ -13,29 +14,16 @@ function listPosts()
 
     require('view/frontend/listPostsView.php');
 }
-
-function post()
-{
-    $postManager = new PostManager();
-    $commentManager = new CommentManager();
-
-    $post = $postManager->getPost($_GET['id']);
-    $comments = $commentManager->getComments($_GET['id']);
-
-    require('view/frontend/postView.php');
-}
-
-function addComment($postId, $memberId, $comment)
+//Ajouter un commentaire
+function addComment($post_id, $member_id, $comment)
 {
     $commentManager = new CommentManager();
-
-    $affectedLines = $commentManager->postComment($postId, $memberId, $comment);
-
+    $affectedLines = $commentManager->postComment($post_id, $member_id, $comment);
     if ($affectedLines === false) {
         throw new Exception('Impossible d\'ajouter le commentaire !');
     }
     else {
-        header('Location: index.php?action=post&id=' . $postId);
+        header('Location: index.php?action=post&id=' . $post_id);
     }
 }
 

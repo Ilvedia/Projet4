@@ -6,7 +6,7 @@
 
 
 <?php
-while ($data = $post->fetch())
+while ($data = $posts->fetch())
 {
     ?>
     <div id="chapters">

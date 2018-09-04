@@ -26,3 +26,22 @@ function editPost ($id, $title, $content)
         header('location: index.php?action=post&id='.$id);
     }
 }
+
+function listPostsBack ()
+{
+    $PostManager = new PostManager();
+    $posts = $PostManager->getPosts();
+    require('view/backend/managePostsView.php');
+}
+
+function deletePost($post_id)
+{
+    $postManager = new PostManager();
+    $affectedLines = $postManager->postDelete($post_id);
+    if ($affectedLines === false) {
+        throw new Exception('Impossible de supprimer le chapitre');
+    }
+    else {
+        header('Location: index.php?action=managePosts');
+    }
+}

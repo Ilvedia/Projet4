@@ -16,10 +16,11 @@ try {
                 throw new Exception('Aucun identifiant de billet envoyé');
             }
         }
+        //Ajouter un commentaire
         elseif ($_GET['action'] == 'addComment') {
             if (isset($_GET['id']) && $_GET['id'] > 0) {
-                if (!empty($_POST['author']) && !empty($_POST['comment'])) {
-                    addComment($_GET['id'], $_POST['author'], $_POST['comment']);
+                if (!empty($_POST['pseudo']) && !empty($_POST['comment'])) {
+                    addComment($_GET['id'], $_POST['pseudo'], $_POST['comment']);
                 }
                 else {
                     throw new Exception('Tous les champs ne sont pas remplis !');
@@ -73,26 +74,20 @@ try {
                 throw new Exception($accessdenied);
             }
         }
-        //Ecrire un nouvel article depuis la zone admin
-        elseif($_GET['action'] == 'newPost'){
-            if (!empty($_POST['content'])&& !empty($_POST['title'])){
-                newPost($_POST['title'], $_POST['content']);
-            }else {
-                throw new Exception('Tous les champs ne sont pas remplis');
+        //vers la page de gestion des articles
+        elseif($_GET['action'] == 'managePosts'){
+            if(isset($_SESSION['userLevel']) && $_SESSION['userLevel'] == 'admin'){
+                listPostsBack();
+            }else{
+                throw new Exception($accesdenied);
             }
         }
         //modification d'un chapitre
-        elseif ($_GET['action'] == 'managePosts'){
-            if (isset($_GET['id']) && $_GET['id'] > 0) {
-                if (!empty($_POST['title']) && !empty($_POST['content'])) {
-                    editPost($_GET['id'], $_POST['title'], $_POST['content']);
-                }
-                else {
-                    throw new Exception('Tous les champs ne sont pas remplis !');
-                }
-            }
-            else {
-                throw new Exception('Aucun identifiant de chapitre envoyé');
+        elseif($_GET['action'] == 'managePosts'){
+            if(isset($_SESSION['userLevel']) && $_SESSION['userLevel'] == 'admin'){
+                listPostsBack();
+            }else{
+                throw new Exception($accesdenied);
             }
         }
         //logout membre
