@@ -14,6 +14,20 @@ function listPosts()
 
     require('view/frontend/listPostsView.php');
 }
+function post($id = null, $message = null)
+//Passage en option de l'id article et du message pour le signalement de commentaire
+{
+    $postManager = new PostManager();
+    $commentManager = new CommentManager();
+    //Dans le cas ou un commentaire a été signalé $postId contient l'id de l'article
+    if(isset($id)){
+        $_GET['id'] = $id;
+    }
+    $post = $postManager->getPost($_GET['id']);
+    $comments = $commentManager->getComments($_GET['id']);
+    require('view/frontend/postView.php');
+}
+
 //Ajouter un commentaire
 function addComment($post_id, $member_id, $comment)
 {

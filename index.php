@@ -90,6 +90,14 @@ try {
                 throw new Exception($accesdenied);
             }
         }
+        //vers la page de gestion des membres
+        elseif($_GET['action'] == 'manageUsers'){
+            if(isset($_SESSION['userLevel']) && $_SESSION['userLevel'] == 'admin'){
+                listUsers();
+            }else{
+                throw new Exception($accesdenied);
+            }
+        }
         //logout membre
         elseif ($_GET['action'] == 'logout'){
             logout();

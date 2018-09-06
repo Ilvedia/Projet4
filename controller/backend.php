@@ -45,3 +45,10 @@ function deletePost($post_id)
         header('Location: index.php?action=managePosts');
     }
 }
+
+function listUsers()
+{
+    $userManager = new UserManager();
+    $users = $userManager->listUsers();
+    require('view/backend/manageUsersView.php');
+}

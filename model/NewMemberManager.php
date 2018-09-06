@@ -24,4 +24,19 @@ class UserManager extends Manager
             'pass' => $pass_hash,
             'email' => $email));
     }
+
+    public function listUsers()
+    {
+        $db = $this->dbConnect();
+        $users = $db->query('SELECT id, pseudo, pass, email, userLevel, DATE_FORMAT(inscription_date, \'%d/%m/%Y \') AS inscription_date_fr FROM members');
+        return $users;
+    }
+
+    public function userDelete($userId)
+    {
+        $db = $this->dbConnect();
+        $user = $db->prepare('DELETE FROM members WHERE id='.$userId);
+        $affectedLines = $user->execute(array($userId));
+        return $affectedLines;
+    }
 }

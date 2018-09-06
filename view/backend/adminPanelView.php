@@ -16,7 +16,7 @@
             <th>Membres</th>
         </tr>
         <tr>
-            <td><a href="index.php?action=manageUser">Gestion des membres</a></td>
+            <td><a href="index.php?action=manageUsers">Gestion des membres</a></td>
         </tr>
         <tr>
             <th>Commentaires</th>
