@@ -27,6 +27,13 @@ function editPost ($id, $title, $content)
     }
 }
 
+function viewEditPost ($postId)
+{
+    $postManager = new postManager();
+    $post = $postManager->getPost($postId);
+    require ('view/backend/editPostView.php');
+}
+
 function listPostsBack ()
 {
     $PostManager = new PostManager();

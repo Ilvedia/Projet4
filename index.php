@@ -83,11 +83,34 @@ try {
             }
         }
         //modification d'un chapitre
-        elseif($_GET['action'] == 'managePosts'){
+        elseif ($_GET['action'] == 'editPostView') {
             if(isset($_SESSION['userLevel']) && $_SESSION['userLevel'] == 'admin'){
-                listPostsBack();
+                if (isset($_GET['id']) && $_GET['id'] > 0) {
+                    viewEditPost($_GET['id']);
+                }else {
+                    throw new Exception('Aucun article à éditer !');
+                }
             }else{
                 throw new Exception($accesdenied);
+            }
+        }
+        //validation de l'edition de l'article
+        elseif($_GET['action'] == 'editPost'){
+            if(isset($_SESSION['userLevel']) && $_SESSION['userLevel'] == 'admin'){
+                if (isset($_GET['id']) && $_GET['id'] > 0){
+                }else{
+                    throw new Exception('Aucun id d\'article');
+                }
+            }else{
+                throw new Exception($accesdenied);
+            }
+        }
+        //vers la page d'édition de chapitre
+        elseif ($_GET['action'] == 'editPostView'){
+            if (isset($_SESSION['userLevel']) && $_SESSION['userLevel'] == 'admin'){
+                viewEditPost($_GET['id']);
+            }else {
+                throw new Exception('Aucun chapitre à éditer');
             }
         }
         //vers la page de gestion des membres
