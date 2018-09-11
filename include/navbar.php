@@ -1,7 +1,7 @@
 <!-- Navigation -->
-<nav class="navbar navbar-expand-lg">
+<nav class="navbar navbar-default navbar-expand-lg navbar-static-top">
     <div class="container">
-        <div class="collapse navbar-collapse" id="navbarResponsive">
+        <div class="collapse navbar-collapse " id="navbarResponsive">
             <ul class="nav navbar-nav">
                 <li class="active">
                     <a href="index.php">Accueil</a>

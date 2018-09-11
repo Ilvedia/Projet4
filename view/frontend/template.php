@@ -9,18 +9,18 @@
 <!--début nav-->
 <?php include("include/navbar.php"); ?>
 <!-- fin nav-->
-    <div id="content" class="container">
+    <div id="content" class="container-fluid">
         <div class="row">
-            <div class="col-md-4">
+            <div class="col-md-3">
                 <!--login-->
-                <div class="member">
+                <div class="well">
                     <h5>Espace membre</h5>
                     <div class="input-group">
                         <?php include("include/authArea.php"); ?>
                     </div>
                 </div>
             </div>
-            <div class="col-md-8">
+            <div class="col-offset-md-1 col-md-8">
                 <?= $content ?>
             </div>
         </div>

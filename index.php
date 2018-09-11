@@ -19,7 +19,7 @@ try {
         //Ajouter un commentaire
         elseif ($_GET['action'] == 'addComment') {
             if (isset($_GET['id']) && $_GET['id'] > 0) {
-                if (!empty($_POST['pseudo']) && !empty($_POST['comment'])) {
+                if (!empty($_POST['comment'])) {
                     addComment($_GET['id'], $_POST['pseudo'], $_POST['comment']);
                 }
                 else {
@@ -31,7 +31,7 @@ try {
             }
         }
         elseif ($_GET['action'] == 'creationUser') {
-            require('view\frontend\newAccountView.php');
+            require('view/frontend/newAccountView.php');
         }
         //Login d'un membre existant
         elseif ($_GET['action'] == 'login'){
@@ -117,6 +117,18 @@ try {
         elseif($_GET['action'] == 'manageUsers'){
             if(isset($_SESSION['userLevel']) && $_SESSION['userLevel'] == 'admin'){
                 listUsers();
+            }else{
+                throw new Exception($accesdenied);
+            }
+        }
+        //supression d'un membre
+        elseif($_GET['action'] == 'deleteUser'){
+            if(isset($_SESSION['userLevel']) && $_SESSION['userLevel'] == 'admin'){
+                if(isset($_GET['id']) && $_GET['id'] > 0){
+                    deleteUser($_GET['id']);
+                }else{
+                    throw new Exception('Aucun id de membre');
+                }
             }else{
                 throw new Exception($accesdenied);
             }

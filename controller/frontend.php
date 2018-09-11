@@ -29,15 +29,15 @@ function post($id = null, $message = null)
 }
 
 //Ajouter un commentaire
-function addComment($post_id, $member_id, $comment)
+function addComment($postId, $member_id, $comment)
 {
     $commentManager = new CommentManager();
-    $affectedLines = $commentManager->postComment($post_id, $member_id, $comment);
-    if ($affectedLines === false) {
+    $affectedLines = $commentManager->postComment($postId, $member_id, $comment);
+    if ($affectedLines === false){
         throw new Exception('Impossible d\'ajouter le commentaire !');
     }
     else {
-        header('Location: index.php?action=post&id=' . $post_id);
+        header('Location: index.php?action=post&id=' . $postId);
     }
 }
 

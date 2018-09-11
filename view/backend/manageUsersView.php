@@ -11,7 +11,6 @@
             <th>Email</th>
             <th>Niveau de l'utilisateur</th>
             <th>Date d'inscription</th>
-            <th>Editer</th>
             <th>Supprimer</th>
         </tr>
         <tr>
@@ -23,7 +22,6 @@
             <td><?php echo htmlspecialchars($data['email']); ?></td>
             <td><?php echo htmlspecialchars($data['userLevel']); ?></td>
             <td><?php echo htmlspecialchars($data['inscription_date_fr']); ?></td>
-            <td><a href="index.php?action=editUserView&amp;id=<?php echo $data['id']; ?>"><button type="button" class="btn btn-info">Editer</button></a></td>
             <td><a href="index.php?action=deleteUser&amp;id=<?php echo $data['id']; ?>" onclick="return confirm('Etes vous sur de vouloir supprimer cet utilisateur ?')"><button type="button" class="btn btn-danger">Supprimer</button></a></td>
         </tr>
 

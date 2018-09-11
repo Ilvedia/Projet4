@@ -59,3 +59,15 @@ function listUsers()
     $users = $userManager->listUsers();
     require('view/backend/manageUsersView.php');
 }
+
+function deleteUser($userId)
+{
+    $userManager = new UserManager();
+    $affectedLines = $userManager->userDelete($userId);
+    if ($affectedLines === false) {
+        throw new Exception('Impossible de supprimer ce membre');
+    }
+    else {
+        header('Location: index.php?action=manageUsers');
+    }
+}
