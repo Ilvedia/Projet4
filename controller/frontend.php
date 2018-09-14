@@ -11,33 +11,33 @@ function listPosts()
 {
     $postManager = new PostManager(); // Création d'un objet
     $posts = $postManager->getPosts(); // Appel d'une fonction de cet objet
-
     require('view/frontend/listPostsView.php');
 }
-function post($id = null, $message = null)
+//AFFICHE UN ARTICLE
+function post($post_id = null, $message = null)
 //Passage en option de l'id article et du message pour le signalement de commentaire
 {
     $postManager = new PostManager();
     $commentManager = new CommentManager();
     //Dans le cas ou un commentaire a été signalé $postId contient l'id de l'article
-    if(isset($id)){
-        $_GET['id'] = $id;
+    if(isset($post_id)){
+        $_GET['id'] = $post_id;
     }
     $post = $postManager->getPost($_GET['id']);
     $comments = $commentManager->getComments($_GET['id']);
     require('view/frontend/postView.php');
 }
 
-//Ajouter un commentaire
-function addComment($postId, $member_id, $comment)
+//AJOUT D'UN COMMENTAIRE PAR L'USER
+function addComment($post_id, $member_id, $comment)
 {
     $commentManager = new CommentManager();
-    $affectedLines = $commentManager->postComment($postId, $member_id, $comment);
+    $affectedLines = $commentManager->postComment($post_id, $member_id, $comment);
     if ($affectedLines === false){
         throw new Exception('Impossible d\'ajouter le commentaire !');
     }
     else {
-        header('Location: index.php?action=post&id=' . $postId);
+        header('Location: index.php?action=post&id=' . $post_id);
     }
 }
 

@@ -29,7 +29,7 @@ if(isset($_SESSION['pseudo']))
             <div class="form-group">
                 <label for="pseudo" class="col-md-6 col-form-label">Pseudo</label>
                 <div class="col-md-6">
-                    <input type="text" class="form-control" id="pseudo" name="author" value="<?php if(isset($_SESSION['pseudo'])) echo $_SESSION['pseudo'] ?>" readonly >
+                    <input type="text" class="form-control" id="member_id" name="author" value="<?php if(isset($_SESSION['pseudo'])) echo $_SESSION['pseudo'] ?>" readonly >
                 </div>
             </div>
             <div>
