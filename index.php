@@ -18,9 +18,6 @@ try {
         }
         //Ajouter un commentaire
         elseif ($_GET['action'] == 'addComment') {
-            var_dump($_GET['id']);
-            var_dump($_POST['member_id']);
-            var_dump($_POST['comment']);
             if (isset($_GET['id']) && $_GET['id'] > 0) {
 
                 if (!empty($_POST['member_id']) && !empty($_POST['comment'])) {
@@ -104,6 +101,14 @@ try {
                 }else{
                     throw new Exception('Aucun id d\'article');
                 }
+            }else{
+                throw new Exception($accesdenied);
+            }
+        }
+        //vers la page de gestion des commentaires
+        elseif($_GET['action'] == 'manageComments'){
+            if(isset($_SESSION['userLevel']) && $_SESSION['userLevel'] == 'admin'){
+                listCommentsBack();
             }else{
                 throw new Exception($accesdenied);
             }

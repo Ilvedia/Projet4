@@ -71,3 +71,10 @@ function deleteUser($userId)
         header('Location: index.php?action=manageUsers');
     }
 }
+
+function listCommentsBack ()
+{
+    $CommentManager = new CommentManager();
+    $comments = $CommentManager->getAllComments();
+    require('view/backend/manageCommentsView.php');
+}
