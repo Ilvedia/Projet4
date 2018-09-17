@@ -18,8 +18,12 @@ try {
         }
         //Ajouter un commentaire
         elseif ($_GET['action'] == 'addComment') {
+            var_dump($_GET['id']);
+            var_dump($_POST['member_id']);
+            var_dump($_POST['comment']);
             if (isset($_GET['id']) && $_GET['id'] > 0) {
-                if (!empty($_POST['author']) && !empty($_POST['comment'])) {
+
+                if (!empty($_POST['member_id']) && !empty($_POST['comment'])) {
                     addComment($_GET['id'], $_POST['member_id'], $_POST['comment']);
                 }
                 else {
