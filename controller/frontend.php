@@ -13,9 +13,11 @@ function listPosts()
     $posts = $postManager->getPosts(); // Appel d'une fonction de cet objet
     require('view/frontend/listPostsView.php');
 }
+
+
 //AFFICHE UN ARTICLE
 function post($post_id = null, $message = null)
-//Passage en option de l'id article et du message pour le signalement de commentaire
+//Passage en option de l'id chapitre et du message pour le signalement de commentaire
 {
     $postManager = new PostManager();
     $commentManager = new CommentManager();

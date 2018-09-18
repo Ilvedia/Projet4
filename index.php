@@ -113,6 +113,14 @@ try {
                 throw new Exception($accesdenied);
             }
         }
+        //signalement d'un commentaire
+        elseif ($_GET['action'] == 'signal') {
+            if (isset($_GET['id']) && $_GET['id'] > 0) {
+                signalCom($_GET['id']);
+            }else {
+                throw new Exception('Aucun identifiant de commentaire envoyé');
+            }
+        }
         //vers la page d'édition de chapitre
         elseif ($_GET['action'] == 'editPostView'){
             if (isset($_SESSION['userLevel']) && $_SESSION['userLevel'] == 'admin'){

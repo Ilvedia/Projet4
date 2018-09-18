@@ -49,12 +49,29 @@ if(isset($_SESSION['pseudo']))
     </div>
     <?php
 }
+
+?>
+<span id="signalMessage">
+                <p><?php
+                    //message info signalement commentaire
+                    if(isset($message)){
+                        echo $message;
+                    }
+                    ?>
+                </p>
+            </span>
+<!--AFFICHAGE DES COMMENTAIRES-->
+
+<?php
 while ($comment = $comments->fetch())
 {
-    ?>
-    <p><strong><?= htmlspecialchars($comment['pseudo']) ?></strong> le <?= $comment['comment_date_fr'] ?></p>
-    <p><?= nl2br(htmlspecialchars($comment['comment'])) ?></p>
-    <?php
+    if($comment['status'] != 'warning')
+    {
+        ?>
+        <p><strong><?= htmlspecialchars($comment['pseudo']) ?></strong> le <?= $comment['comment_date_fr'] ?></p>
+        <p><?= nl2br(htmlspecialchars($comment['comment'])) ?></p>
+        <?php
+    }
 }
 $content = ob_get_clean();
 

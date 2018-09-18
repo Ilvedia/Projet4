@@ -15,6 +15,13 @@ function newPost($title, $content)
     }
 }
 
+function viewEditPost ($postId)
+{
+    $postManager = new postManager();
+    $post = $postManager->getPost($postId);
+    require ('view/backend/editPostView.php');
+}
+
 function editPost ($id, $title, $content)
 {
     $PostManager = new PostManager();
@@ -25,13 +32,6 @@ function editPost ($id, $title, $content)
     else{
         header('location: index.php?action=post&id='.$id);
     }
-}
-
-function viewEditPost ($postId)
-{
-    $postManager = new postManager();
-    $post = $postManager->getPost($postId);
-    require ('view/backend/editPostView.php');
 }
 
 function listPostsBack ()
@@ -53,6 +53,61 @@ function deletePost($post_id)
     }
 }
 
+function listCommentsBack ()
+{
+    $commentManager = new CommentManager();
+    $comments = $commentManager->getAllComments();
+    require('view/backend/manageCommentsView.php');
+}
+
+function signalCom($comId)
+{
+    $commentManager = new CommentManager();
+    $affectedLines = $commentManager->warnedCom($comId);
+    try{
+        if ($affectedLines === false) {
+            throw new Exception('Impossible de signaler le commentaire');
+        }else {
+            throw new Exception('Commentaire signalé avec succès ! ');
+        }
+    }
+    catch(Exception $e){
+        $message = $e->getMessage();
+        //On récupère l'id de l'article correspondant au commentaire
+        $affectedLines = $commentManager->getPostByComment($comId);
+        $post_id = $affectedLines[0];
+        //On envoi à la fonction post l'id de l'article qui récupère l'article et les com liés
+        post($post_id, $message);
+    }
+}
+function viewEditCom($comId)
+{
+    $commentManager = new CommentManager();
+    $comment = $commentManager->getComment($comId);
+    require('view/backend/editCommentView.php');
+}
+function editCom($id, $member_id, $comment, $status)
+{
+    $commentManager = new CommentManager();
+    $affectedLines = $commentManager->commentEdit($id, $member_id, $comment, $status);
+    if ($affectedLines === false) {
+        throw new Exception('Impossible d\'éditer le commentaire');
+    }
+    else {
+        header('location:index.php?action=manageComments');
+    }
+}
+function deleteCom($comId)
+{
+    $commentManager = new CommentManager();
+    $affectedLines = $commentManager->commentDelete($comId);
+    if ($affectedLines === false) {
+        throw new Exception('Impossible de supprimer le chapitre');
+    }
+    else {
+        header('location:index.php?action=manageComments');
+    }
+}
 function listUsers()
 {
     $userManager = new UserManager();
@@ -72,9 +127,3 @@ function deleteUser($userId)
     }
 }
 
-function listCommentsBack ()
-{
-    $CommentManager = new CommentManager();
-    $comments = $CommentManager->getAllComments();
-    require('view/backend/manageCommentsView.php');
-}
