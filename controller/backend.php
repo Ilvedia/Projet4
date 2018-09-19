@@ -71,25 +71,28 @@ function signalCom($comId)
             throw new Exception('Commentaire signalé avec succès ! ');
         }
     }
+
     catch(Exception $e){
         $message = $e->getMessage();
         //On récupère l'id de l'article correspondant au commentaire
         $affectedLines = $commentManager->getPostByComment($comId);
         $post_id = $affectedLines[0];
-        //On envoi à la fonction post l'id de l'article qui récupère l'article et les com liés
+        //On envoi à la fonction post l'id de l'article qui récupère le chapitre et les com liés
         post($post_id, $message);
     }
 }
+
 function viewEditCom($comId)
 {
     $commentManager = new CommentManager();
     $comment = $commentManager->getComment($comId);
     require('view/backend/editCommentView.php');
 }
-function editCom($id, $member_id, $comment, $status)
+
+function editCom($id, $comment, $status)
 {
     $commentManager = new CommentManager();
-    $affectedLines = $commentManager->commentEdit($id, $member_id, $comment, $status);
+    $affectedLines = $commentManager->commentEdit($id, $comment, $status);
     if ($affectedLines === false) {
         throw new Exception('Impossible d\'éditer le commentaire');
     }

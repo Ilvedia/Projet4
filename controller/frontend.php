@@ -14,14 +14,13 @@ function listPosts()
     require('view/frontend/listPostsView.php');
 }
 
-
 //AFFICHE UN ARTICLE
 function post($post_id = null, $message = null)
-//Passage en option de l'id chapitre et du message pour le signalement de commentaire
+//Passage en option de l'id article et du message pour le signalement de commentaire
 {
     $postManager = new PostManager();
     $commentManager = new CommentManager();
-    //Dans le cas ou un commentaire a été signalé $postId contient l'id de l'article
+    //Dans le cas ou un commentaire a été signalé $post_id contient l'id de l'article
     if(isset($post_id)){
         $_GET['id'] = $post_id;
     }

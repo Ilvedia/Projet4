@@ -24,7 +24,16 @@
             <td><?php echo htmlspecialchars($data['pseudo']); ?></td>
             <td><?php echo htmlspecialchars($data['comment']); ?></td>
             <td><?php echo htmlspecialchars($data['comment_date_fr']); ?></td>
-            <td><?php echo htmlspecialchars($data['status']); ?></td>
+            <td><?php if($data['status'] == 'valid'){
+                    ?>
+                    <span id="statusValid"><p>Non signalé</p></span>
+                    <?php
+                }else{
+                    ?>
+                    <span id="statusWarning"><p>Signalé</p></span>
+                    <?php
+                }
+                ?></td>
             <td><a href="index.php?action=editCommentView&amp;id=<?php echo $data['id']; ?>"><button type="button" class="btn btn-info">Editer</button></a></td>
             <td><a href="index.php?action=deleteComment&amp;id=<?php echo $data['id']; ?>" onclick="return confirm('Etes vous sur de vouloir supprimer ce commentaire ?')"><button type="button" class="btn btn-danger">Supprimer</button></a></td>
         </tr>

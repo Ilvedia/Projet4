@@ -129,6 +129,15 @@ try {
                 throw new Exception('Aucun chapitre à éditer');
             }
         }
+        //vers la vue edition de commentaire
+        elseif ($_GET['action'] == 'editCommentView') {
+            if (isset($_GET['id']) && $_GET['id'] > 0) {
+                viewEditCom($_GET['id']);
+            }else {
+                throw new Exception('Aucun identifiant de commentaire envoyé');
+            }
+        }
+
         //vers la page de gestion des membres
         elseif($_GET['action'] == 'manageUsers'){
             if(isset($_SESSION['userLevel']) && $_SESSION['userLevel'] == 'admin'){
@@ -137,7 +146,7 @@ try {
                 throw new Exception($accesdenied);
             }
         }
-        //supression d'un membre
+        //suppression d'un membre
         elseif($_GET['action'] == 'deleteUser'){
             if(isset($_SESSION['userLevel']) && $_SESSION['userLevel'] == 'admin'){
                 if(isset($_GET['id']) && $_GET['id'] > 0){

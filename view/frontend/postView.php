@@ -70,8 +70,15 @@ while ($comment = $comments->fetch())
         ?>
         <p><strong><?= htmlspecialchars($comment['pseudo']) ?></strong> le <?= $comment['comment_date_fr'] ?></p>
         <p><?= nl2br(htmlspecialchars($comment['comment'])) ?></p>
+        <a href="index.php?action=signal&amp;id=<?php echo $comment['id'];?>"><button class="btn btn-light" type="button">Signaler</button></a></p>
         <?php
-    }
+    }else
+        {
+            ?>
+            <p><strong><?= htmlspecialchars($comment['pseudo']) ?></strong> le <?= $comment['comment_date_fr'] ?></p>
+            <p>Commentaire en attente de modération.</p>
+            <?php
+        }
 }
 $content = ob_get_clean();
 

@@ -6,11 +6,9 @@ class CommentManager extends Manager
     public function getComments($post_id)
     {
         $db = $this->dbConnect();
-        $comments = $db->prepare('SELECT members.pseudo, comments.comment, DATE_FORMAT(comments.comment_date, \'%d/%m/%Y à %Hh%imin%ss\') AS comment_date_fr FROM members INNER JOIN comments ON members.id = comments.member_id WHERE comments.post_id = ? ORDER BY comments.comment_date DESC');
+        $comments = $db->prepare('SELECT members.pseudo, comments.comment, comments.status, DATE_FORMAT(comments.comment_date, \'%d/%m/%Y à %Hh%imin%ss\') AS comment_date_fr FROM members INNER JOIN comments ON members.id = comments.member_id WHERE comments.post_id = ? ORDER BY comments.comment_date DESC');
         $comments->execute(array($post_id));
         return $comments;
-
-
     }
 
     public function postComment($post_id, $member_id, $comment)
@@ -27,6 +25,7 @@ class CommentManager extends Manager
         $comments = $db->query('SELECT members.pseudo, comments.id, comments.post_id, comments.comment, comments.status, DATE_FORMAT(comments.comment_date, \'%d/%m/%Y à %Hh%imin%ss\') AS comment_date_fr FROM members INNER JOIN comments ON members.id = comments.member_id ORDER BY comments.comment_date DESC');
         return $comments;
     }
+
     public function warnedCom($comId)
     {
         $db = $this->dbConnect();
@@ -34,6 +33,7 @@ class CommentManager extends Manager
         $affectedLines = $comment->execute(array($comId));
         return $affectedLines;
     }
+
     public function getComment($comId)
     {
         $db = $this->dbConnect();
@@ -50,13 +50,15 @@ class CommentManager extends Manager
         $postId = $req->fetch();
         return $postId;
     }
-    public function commentEdit($id, $member_id, $comment, $status)
+
+    public function commentEdit($id, $comment, $status)
     {
         $db = $this->dbConnect();
-        $req = $db->prepare('UPDATE comments SET id = ?, member_id = ?, comment = ?, status = ? WHERE id ='.$id);
-        $affectedLines = $req->execute(array($id, $member_id, $comment, $status));
+        $req = $db->prepare('UPDATE comments SET id = ?, comment = ?, status = ? WHERE id ='.$id);
+        $affectedLines = $req->execute(array($id, $comment, $status));
         return $affectedLines;
     }
+
     public function commentDelete($comId)
     {
         $db = $this->dbConnect();
