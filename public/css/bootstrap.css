@@ -1086,7 +1086,7 @@ body {
   font-size: 14px;
   line-height: 1.42857143;
   color: #333;
-  background-color: rgba(41, 180, 180, 0.91);
+  background-color: #29B4B4;
 }
 input,
 button,
@@ -1121,7 +1121,7 @@ img {
 .carousel-inner > .item > img,
 .carousel-inner > .item > a > img {
   display: block;
-  max-width: 100%;
+  max-width: 50%;
   height: auto;
 }
 .img-rounded {
@@ -1129,12 +1129,12 @@ img {
 }
 .img-thumbnail {
   display: inline-block;
-  max-width: 100%;
+  max-width: 50%;
   height: auto;
   padding: 4px;
   line-height: 1.42857143;
-  background-color: #fff;
-  border: 1px solid #ddd;
+  background-color: #29b4b4;
+  border: 1px solid #29b4b4;
   border-radius: 4px;
   -webkit-transition: all .2s ease-in-out;
        -o-transition: all .2s ease-in-out;
@@ -5003,8 +5003,8 @@ a.badge:focus {
   padding: 4px;
   margin-bottom: 20px;
   line-height: 1.42857143;
-  background-color: #fff;
-  border: 1px solid #ddd;
+  background-color: #29b4b4;
+  border: 1px solid #29b4b4;
   border-radius: 4px;
   -webkit-transition: border .2s ease-in-out;
        -o-transition: border .2s ease-in-out;

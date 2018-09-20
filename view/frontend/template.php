@@ -11,6 +11,13 @@
 <!-- fin nav-->
     <div id="content" class="container-fluid">
         <div class="row">
+            <div class="col-md-12">
+                <div class="thumbnail">
+                    <img src="public/images/adventure-alaska.jpg" alt="Montagne Alaska" class="img-responsive">
+                </div>
+            </div>
+        </div>
+        <div class="row">
             <div class="col-md-3">
                 <!--login-->
                 <div class="well">
