@@ -2,7 +2,7 @@
 
 <?php ob_start(); ?>
 
-    <h1>Découvrez mon nouveau roman</h1>
+    <h1>Découvrez mon nouveau roman " Billet simple pour l'Alaska"</h1>
     <p>Derniers chapitres de mon nouveau roman :</p>
 
 
