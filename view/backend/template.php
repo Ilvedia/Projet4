@@ -28,6 +28,9 @@
             </div>
         </div>
     </div>
+    <!--footer-->
+    <?php include("include/footer.php"); ?>
+    <!--fin footer-->
 </body>
 <script src="js/jquery.js"></script>
 <script src="js/bootstrap.js "></script>
