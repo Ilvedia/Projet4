@@ -15,14 +15,14 @@ function listPosts()
 }
 
 //AFFICHE UN ARTICLE
-function post($post_id = null, $message = null)
+function post($postId = null, $message = null)
 //Passage en option de l'id article et du message pour le signalement de commentaire
 {
     $postManager = new PostManager();
     $commentManager = new CommentManager();
     //Dans le cas ou un commentaire a été signalé $post_id contient l'id de l'article
-    if(isset($post_id)){
-        $_GET['id'] = $post_id;
+    if(isset($postId)){
+        $_GET['id'] = $postId;
     }
     $post = $postManager->getPost($_GET['id']);
     $comments = $commentManager->getComments($_GET['id']);
