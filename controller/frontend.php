@@ -20,7 +20,7 @@ function post($postId = null, $message = null)
 {
     $postManager = new PostManager();
     $commentManager = new CommentManager();
-    //Dans le cas ou un commentaire a été signalé $post_id contient l'id de l'article
+    //Dans le cas où un commentaire a été signalé $postId contient l'id du chapitre
     if(isset($postId)){
         $_GET['id'] = $postId;
     }

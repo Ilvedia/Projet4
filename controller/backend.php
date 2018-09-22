@@ -71,14 +71,13 @@ function signalCom($comId)
             throw new Exception('Commentaire signalé avec succès ! ');
         }
     }
-
     catch(Exception $e){
         $message = $e->getMessage();
-        //On récupère l'id de l'article correspondant au commentaire
+        //On récupere l'id de l'article correspondant au commentaire
         $affectedLines = $commentManager->getPostByComment($comId);
-        $post_id = $affectedLines[0];
-        //On envoi à la fonction post l'id de l'article qui récupère le chapitre et les com liés
-        post($post_id, $message);
+        $postId = $affectedLines[0];
+        //On envoi à la fonction post l'id de l'article qui récupère l'article et les com lié
+        post($postId, $message);
     }
 }
 
@@ -100,17 +99,19 @@ function editCom($id, $comment, $status)
         header('location:index.php?action=manageComments');
     }
 }
+
 function deleteCom($comId)
 {
     $commentManager = new CommentManager();
     $affectedLines = $commentManager->commentDelete($comId);
     if ($affectedLines === false) {
-        throw new Exception('Impossible de supprimer le chapitre');
+        throw new Exception('Impossible de supprimer le commentaire');
     }
     else {
         header('location:index.php?action=manageComments');
     }
 }
+
 function listUsers()
 {
     $userManager = new UserManager();

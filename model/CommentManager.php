@@ -6,7 +6,7 @@ class CommentManager extends Manager
     public function getComments($postId)
     {
         $db = $this->dbConnect();
-        $comments = $db->prepare('SELECT members.pseudo, comments.comment, comments.status, DATE_FORMAT(comments.comment_date, \'%d/%m/%Y à %Hh%imin%ss\') AS comment_date_fr FROM members INNER JOIN comments ON members.id = comments.member_id WHERE comments.post_id = ? ORDER BY comments.comment_date DESC');
+        $comments = $db->prepare('SELECT members.pseudo, comments.id, comments.comment, comments.status, DATE_FORMAT(comments.comment_date, \'%d/%m/%Y à %Hh%imin%ss\') AS comment_date_fr FROM members INNER JOIN comments ON members.id = comments.member_id WHERE comments.post_id = ? ORDER BY comments.comment_date DESC');
         $comments->execute(array($postId));
         return $comments;
     }
@@ -37,11 +37,12 @@ class CommentManager extends Manager
     public function getComment($comId)
     {
         $db = $this->dbConnect();
-        $req = $db->prepare('SELECT id, member_id, comment, status FROM comments WHERE id = ?');
+        $req = $db->prepare('SELECT id, comment, status FROM comments WHERE id = ?');
         $req->execute(array($comId));
         $comment = $req->fetch();
         return $comment;
     }
+
     public function getPostByComment($comId)
     {
         $db = $this->dbConnect();

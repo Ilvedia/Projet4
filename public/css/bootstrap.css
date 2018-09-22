@@ -6755,3 +6755,24 @@ button.close {
   }
 }
 /*# sourceMappingURL=bootstrap.css.map */
+#statusWarning p{
+  color: #fff;
+  background-color: #d9534f;
+  border-color: #d43f3a;
+  border-radius: 3px;
+  text-align: center;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  margin-top: -5px;
+  margin-bottom: -5px;
+}
+#statusValid p {
+  color: #fff;
+  background-color: #5cb85c;
+  border-color: #4cae4c;
+  border-radius: 3px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  margin-top: -5px;
+  margin-bottom: -5px;
+}
