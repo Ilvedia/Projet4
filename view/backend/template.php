@@ -23,7 +23,7 @@
     <?php include("include/navbar.php"); ?>
     <div id="content" class="container">
         <div class="row">
-            <div class="col-md-offset-1 col-md-11">
+            <div class="col-sm-offset-1 col-sm-11">
                 <?= $content ?>
             </div>
         </div>
@@ -32,6 +32,6 @@
     <?php include("include/footer.php"); ?>
     <!--fin footer-->
 </body>
-<script src="js/jquery.js"></script>
-<script src="js/bootstrap.js "></script>
+<script src="public/js/jquery.js"></script>
+<script src="public/js/bootstrap.js "></script>
 </html>

@@ -25,14 +25,14 @@
 <!-- fin nav-->
     <div id="content" class="container-fluid">
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-sm-12">
                 <div class="thumbnail">
                     <img src="public/images/adventure-alaska.jpg" alt="Montagne Alaska" class="img-responsive">
                 </div>
             </div>
         </div>
         <div class="row">
-            <div class="col-md-3">
+            <div class="col-sm-3">
                 <!--login-->
                 <div class="well">
                     <h5>Espace membre</h5>
@@ -41,7 +41,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-offset-md-1 col-md-8">
+            <div class="col-offset-sm-1 col-sm-8">
                 <?= $content ?>
             </div>
         </div>
@@ -50,6 +50,6 @@
 <?php include("include/footer.php"); ?>
 <!--fin footer-->
 </body>
-<script src="js/jquery.js"></script>
-<script src="js/bootstrap.js "></script>
+<script src="public/js/jquery.js"></script>
+<script src="public/js/bootstrap.js"></script>
 </html>
