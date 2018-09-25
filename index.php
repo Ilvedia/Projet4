@@ -2,7 +2,7 @@
 require('controller/frontend.php');
 require('controller/backend.php');
 
-$accessdenied = 'Vous tentez d\'accéder à un espace réservé aux administrateurs !';
+$accesdenied = 'Vous tentez d\'accéder à un espace réservé aux administrateurs !';
 try {
     if (isset($_GET['action'])) {
         if ($_GET['action'] == 'listPosts') {
@@ -71,10 +71,18 @@ try {
             if(isset($_SESSION['userLevel']) && $_SESSION['userLevel'] == 'admin'){
                 require('view/backend/newPostView.php');
             }else{
-                throw new Exception($accessdenied);
+                throw new Exception($accesdenied);
             }
         }
-        //vers la page de gestion des articles
+        //Ecrire un nouvel article depuis la zone admin
+        elseif($_GET['action'] == 'newPost'){
+            if (!empty($_POST['content'])&& !empty($_POST['title'])){
+                newPost($_POST['title'], $_POST['content']);
+            }else {
+                throw new Exception('Tous les champs ne sont pas remplis');
+            }
+        }
+        //vers la page de gestion des chapitres
         elseif($_GET['action'] == 'managePosts'){
             if(isset($_SESSION['userLevel']) && $_SESSION['userLevel'] == 'admin'){
                 listPostsBack();
@@ -94,10 +102,11 @@ try {
                 throw new Exception($accesdenied);
             }
         }
-        //validation de l'edition de l'article
+        //validation de l'edition du chapitre
         elseif($_GET['action'] == 'editPost'){
             if(isset($_SESSION['userLevel']) && $_SESSION['userLevel'] == 'admin'){
                 if (isset($_GET['id']) && $_GET['id'] > 0){
+                    editPost($_GET['id'], $_POST['title'], $_POST['content']);
                 }else{
                     throw new Exception('Aucun id d\'article');
                 }
@@ -121,12 +130,16 @@ try {
                 throw new Exception('Aucun identifiant de commentaire envoyé');
             }
         }
-        //vers la page d'édition de chapitre
-        elseif ($_GET['action'] == 'editPostView'){
-            if (isset($_SESSION['userLevel']) && $_SESSION['userLevel'] == 'admin'){
-                viewEditPost($_GET['id']);
-            }else {
-                throw new Exception('Aucun chapitre à éditer');
+        //Vers la page d'edition de chapitre
+        elseif ($_GET['action'] == 'editPostView') {
+            if(isset($_SESSION['userLevel']) && $_SESSION['userLevel'] == 'admin'){
+                if (isset($_GET['id']) && $_GET['id'] > 0) {
+                    viewEditPost($_GET['id']);
+                }else {
+                    throw new Exception('Aucun chapitre à éditer !');
+                }
+            }else{
+                throw new Exception($accesdenied);
             }
         }
         //vers la vue edition de commentaire
@@ -172,10 +185,10 @@ catch(Exception $e) {
     ob_start();
     ?>
 
-        <div id="errorPage">
-            <p><?php  echo 'Erreur : ' . $e->getMessage(); ?></p>
-            <p>Retour à <a href="index.php">l'accueil</a></p>
-        </div>
+    <div id="errorPage">
+        <p><?php  echo 'Erreur : ' . $e->getMessage(); ?></p>
+        <p>Retour à <a href="index.php">l'accueil</a></p>
+    </div>
 
     <?php
     $content = ob_get_clean();

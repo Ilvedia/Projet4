@@ -17,7 +17,8 @@
         </tr>
         <tr>
             <?php
-            while ($data = $comments->fetch()) {
+            var_dump($comments);
+            while ($data = $comments->fetch()){
             ?>
             <th scope="row"><?php echo nl2br(htmlspecialchars($data['id'])); ?></th>
             <td><?php echo htmlspecialchars($data['post_id']); ?></td>
