@@ -115,13 +115,13 @@ try {
                 throw new Exception($accesdenied);
             }
         }
-        //Suppression d'un article
+        //Suppression d'un chapitre
         elseif($_GET['action'] == 'deletePost'){
             if(isset($_SESSION['userLevel']) && $_SESSION['userLevel'] == 'admin'){
                 if(isset($_GET['id']) && $_GET['id'] > 0){
                     deletePost($_GET['id']);
                 }else{
-                    throw new Exception('Aucun id d\'article');
+                    throw new Exception('Aucun id de chapitre');
                 }
             }else{
                 throw new Exception($accesdenied);

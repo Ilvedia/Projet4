@@ -6,11 +6,11 @@
 
     <table class="table-bordered table-striped table-responsive">
         <tr>
-            <th>ID</th>
-            <th>Titre</th>
-            <th>Publié le</th>
-            <th>Editer</th>
-            <th>Supprimer</th>
+            <th scope="col">ID</th>
+            <th scope="col">Titre</th>
+            <th scope="col">Publié le</th>
+            <th scope="col">Editer</th>
+            <th scope="col">Supprimer</th>
         </tr>
         <tr>
             <?php

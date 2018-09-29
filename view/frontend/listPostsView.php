@@ -10,20 +10,14 @@
 while ($data = $posts->fetch())
 {
     ?>
-    <div id="chapters">
-        <h3>
-            <?= htmlspecialchars($data['title']) ?>
-            <em>le <?= $data['creation_date_fr'] ?></em>
-        </h3>
-
-        <p>
-            <?= nl2br(htmlspecialchars($data['content'])) ?>
-            <br />
-
-        </p>
+    <div class="card mb-4">
+        <div class="card-body">
+            <h3 class="card-title"><?= htmlspecialchars($data['title']) ?></h3>
+            <p class="card-text"><?= nl2br($data['post_summary'])?>...</p>
+            <a href="index.php?action=post&amp;id=<?= $data['id'] ?>" class="btn btn-primary">Lire la suite</a>
+        </div>
     </div>
 
-    <em><a href="index.php?action=post&amp;id=<?= $data['id'] ?>">Commentaires</a></em>
     <?php
 }
 $posts->closeCursor();
