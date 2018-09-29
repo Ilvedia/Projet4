@@ -65,6 +65,8 @@
     <?php include("include/footer.php"); ?>
     <!--fin footer-->
 </body>
+<script src="https://cloud.tinymce.com/stable/tinymce.min.js?"></script>
+<script>tinymce.init({ selector:'textarea' });</script>
 <script src="public/js/jquery.js"></script>
 <script src="public/js/bootstrap.js "></script>
 </html>
