@@ -21,13 +21,46 @@
 </head>
 <body>
     <?php include("include/navbar.php"); ?>
-    <div id="content" class="container">
+    <div id="content" class="container-fluid">
         <div class="row">
-            <div class="col-sm-offset-1 col-sm-11">
+            <!-- Sidebar Widgets Column -->
+            <div class="col-md-3">
+                <!-- Login-->
+                <div class="well">
+                    <h5 class="card-header">Administrateur</h5>
+                    <div class="card-body">
+                        <div class="input-group">
+                            <?php include("include/authArea.php"); ?>
+                        </div>
+                    </div>
+                </div>
+                <div class="well" id="quickNav">
+                    <h5 class="card-header">Accès rapide</h5>
+                    <div class="card-body">
+                        <div class="input-group">
+                            <ul>
+                                <li><a href="index.php?action=admin">Accueil administration</a></li>
+                                <li><a href="index.php?action=writeNewPost">Ecrire un nouvel article</a></li>
+                                <li><a href="index.php?action=managePosts">Gestion des articles</a></li>
+                                <li><a href="index.php?action=manageComments">Gestion des commentaires</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Blog Entries Column -->
+            <div class="col-md-9">
+                <h1 class="my-4"><strong>
+                    </strong></h1>
+                <h5>Vous êtes ici : <?php echo $title; ?> </h5>
                 <?= $content ?>
+                <p><a href="<?php echo $_SERVER["HTTP_REFERER"] ?>">Retour à la page Précédente</a></p>
+
             </div>
         </div>
+        <!-- /.row -->
     </div>
+
     <!--footer-->
     <?php include("include/footer.php"); ?>
     <!--fin footer-->
