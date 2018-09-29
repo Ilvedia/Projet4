@@ -7,6 +7,7 @@ try {
     if (isset($_GET['action'])) {
         if ($_GET['action'] == 'listPosts') {
             listPosts();
+            tronque();
         }
         elseif ($_GET['action'] == 'post') {
             if (isset($_GET['id']) && $_GET['id'] > 0) {
@@ -90,13 +91,13 @@ try {
                 throw new Exception($accesdenied);
             }
         }
-        //modification d'un chapitre
+        //Vers la page d'edition de chapitre
         elseif ($_GET['action'] == 'editPostView') {
             if(isset($_SESSION['userLevel']) && $_SESSION['userLevel'] == 'admin'){
                 if (isset($_GET['id']) && $_GET['id'] > 0) {
                     viewEditPost($_GET['id']);
                 }else {
-                    throw new Exception('Aucun article à éditer !');
+                    throw new Exception('Aucun chapitre à éditer !');
                 }
             }else{
                 throw new Exception($accesdenied);
@@ -107,6 +108,18 @@ try {
             if(isset($_SESSION['userLevel']) && $_SESSION['userLevel'] == 'admin'){
                 if (isset($_GET['id']) && $_GET['id'] > 0){
                     editPost($_GET['id'], $_POST['title'], $_POST['content']);
+                }else{
+                    throw new Exception('Aucun id d\'article');
+                }
+            }else{
+                throw new Exception($accesdenied);
+            }
+        }
+        //Suppression d'un article
+        elseif($_GET['action'] == 'deletePost'){
+            if(isset($_SESSION['userLevel']) && $_SESSION['userLevel'] == 'admin'){
+                if(isset($_GET['id']) && $_GET['id'] > 0){
+                    deletePost($_GET['id']);
                 }else{
                     throw new Exception('Aucun id d\'article');
                 }
@@ -130,18 +143,7 @@ try {
                 throw new Exception('Aucun identifiant de commentaire envoyé');
             }
         }
-        //Vers la page d'edition de chapitre
-        elseif ($_GET['action'] == 'editPostView') {
-            if(isset($_SESSION['userLevel']) && $_SESSION['userLevel'] == 'admin'){
-                if (isset($_GET['id']) && $_GET['id'] > 0) {
-                    viewEditPost($_GET['id']);
-                }else {
-                    throw new Exception('Aucun chapitre à éditer !');
-                }
-            }else{
-                throw new Exception($accesdenied);
-            }
-        }
+
         //vers la vue edition de commentaire
         elseif ($_GET['action'] == 'editCommentView') {
             if (isset($_GET['id']) && $_GET['id'] > 0) {
