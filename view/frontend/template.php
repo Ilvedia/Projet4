@@ -15,6 +15,8 @@
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:site" content="Billet simple pour l'Alaska" />
     <meta name="twitter:creator" content="Caroline Moulin" />
+    <!--pour éviter faille XSS avec TinyMCE-->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' *.tinymce.com; connect-src 'self' *.tinymce.com; img-src 'self' *.tinymce.com data: blob:; style-src 'self' 'unsafe-inline' *.tinymce.com; font-src 'self' *.tinymce.com;" />
 
     <title><?= $title ?></title>
     <link href="public/css/bootstrap.css" rel="stylesheet" />

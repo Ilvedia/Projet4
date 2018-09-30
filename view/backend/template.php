@@ -15,6 +15,8 @@
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:site" content="Billet simple pour l'Alaska" />
     <meta name="twitter:creator" content="Caroline Moulin" />
+    <!--pour éviter faille XSS avec TinyMCE-->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' *.tinymce.com; connect-src 'self' *.tinymce.com; img-src 'self' *.tinymce.com data: blob:; style-src 'self' 'unsafe-inline' *.tinymce.com; font-src 'self' *.tinymce.com;" />
 
     <title><?= $title ?></title>
     <link href="public/css/bootstrap.css" rel="stylesheet" />
@@ -65,7 +67,7 @@
     <?php include("include/footer.php"); ?>
     <!--fin footer-->
 </body>
-<script src="https://cloud.tinymce.com/stable/tinymce.min.js?"></script>
+<script src="https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=5p4fup4lu2igsx9kpwnux1w07u43qmarmzvw30gitrqyg2tl"></script>
 <script>tinymce.init({ selector:'textarea' });</script>
 <script src="public/js/jquery.js"></script>
 <script src="public/js/bootstrap.js "></script>
