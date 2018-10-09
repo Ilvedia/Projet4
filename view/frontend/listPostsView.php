@@ -10,9 +10,9 @@
 while ($data = $posts->fetch())
 {
     ?>
-    <div class="card mb-4">
+    <div class="card md-4">
         <div class="card-body">
-            <h3 class="card-title"><?= htmlspecialchars($data['title']) ?></h3>
+            <h3 class="card-header"><?= htmlspecialchars($data['title']) ?></h3>
             <p class="card-text"><?= nl2br($data['post_summary'])?>...</p>
             <a href="index.php?action=post&amp;id=<?= $data['id'] ?>" class="btn btn-primary">Lire la suite</a>
         </div>

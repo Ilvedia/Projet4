@@ -36,10 +36,12 @@
         <div class="row">
             <div class="col-sm-3">
                 <!--login-->
-                <div class="well">
-                    <h5>Espace membre</h5>
-                    <div class="input-group">
-                        <?php include("include/authArea.php"); ?>
+                <div class="card my-4">
+                    <div class="card-body">
+                        <h5 class="card-header">Espace membre</h5>
+                        <div class="input-group">
+                            <?php include("include/authArea.php"); ?>
+                        </div>
                     </div>
                 </div>
             </div>

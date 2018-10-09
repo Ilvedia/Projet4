@@ -17,10 +17,9 @@
         </tr>
         <tr>
             <?php
-            var_dump($comments);
             while ($data = $comments->fetch()){
             ?>
-            <th scope="row"><?php echo nl2br(htmlspecialchars($data['id'])); ?></th>
+            <th scope="row"><a href="index.php?action=post&id=<?php echo nl2br(htmlspecialchars($data['id'])); ?>" target=_blank>Voir le chapitre</a></th>
             <td><?php echo htmlspecialchars($data['post_id']); ?></td>
             <td><?php echo htmlspecialchars($data['pseudo']); ?></td>
             <td><?php echo htmlspecialchars($data['comment']); ?></td>

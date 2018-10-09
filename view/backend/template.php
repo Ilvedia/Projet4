@@ -15,8 +15,6 @@
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:site" content="Billet simple pour l'Alaska" />
     <meta name="twitter:creator" content="Caroline Moulin" />
-    <!--pour éviter faille XSS avec TinyMCE-->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' *.tinymce.com; connect-src 'self' *.tinymce.com; img-src 'self' *.tinymce.com data: blob:; style-src 'self' 'unsafe-inline' *.tinymce.com; font-src 'self' *.tinymce.com;" />
 
     <title><?= $title ?></title>
     <link href="public/css/bootstrap.css" rel="stylesheet" />
@@ -28,22 +26,22 @@
             <!-- Sidebar Widgets Column -->
             <div class="col-md-3">
                 <!-- Login-->
-                <div class="well">
-                    <h5 class="card-header">Administrateur</h5>
+                <div class="card my-4">
                     <div class="card-body">
+                        <h5 class="card-header">Administrateur</h5>
                         <div class="input-group">
                             <?php include("include/authArea.php"); ?>
                         </div>
                     </div>
                 </div>
-                <div class="well" id="quickNav">
-                    <h5 class="card-header">Accès rapide</h5>
+                <div class="card my-4" id="quickNav">
                     <div class="card-body">
+                        <h5 class="card-header">Accès rapide</h5>
                         <div class="input-group">
                             <ul>
                                 <li><a href="index.php?action=admin">Accueil administration</a></li>
-                                <li><a href="index.php?action=writeNewPost">Ecrire un nouvel article</a></li>
-                                <li><a href="index.php?action=managePosts">Gestion des articles</a></li>
+                                <li><a href="index.php?action=writeNewPost">Ecrire un nouveau chapitre</a></li>
+                                <li><a href="index.php?action=managePosts">Gestion des chapitres</a></li>
                                 <li><a href="index.php?action=manageComments">Gestion des commentaires</a></li>
                             </ul>
                         </div>

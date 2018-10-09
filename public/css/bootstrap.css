@@ -1086,7 +1086,7 @@ body {
   font-size: 14px;
   line-height: 1.42857143;
   color: #333;
-  background-color: #29B4B4;
+  background-color: #8cb0b4;
 }
 input,
 button,
@@ -1133,8 +1133,8 @@ img {
   height: auto;
   padding: 4px;
   line-height: 1.42857143;
-  background-color: #29b4b4;
-  border: 1px solid #29b4b4;
+  background-color: #8cb0b4;
+  border: 1px solid #8cb0b4;
   border-radius: 4px;
   -webkit-transition: all .2s ease-in-out;
        -o-transition: all .2s ease-in-out;
@@ -4494,8 +4494,8 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   }
 }
 .navbar-default {
-  background-color: #29b4b4;
-  border-color: #29b4b4;
+  background-color: #8cb0b4;
+  border-color: #8cb0b4;
 
 }
 .navbar-default .navbar-brand {
@@ -5006,8 +5006,8 @@ a.badge:focus {
   padding: 4px;
   margin-bottom: 20px;
   line-height: 1.42857143;
-  background-color: #29b4b4;
-  border: 1px solid #29b4b4;
+  background-color: #8cb0b4;
+  border: 1px solid #8cb0b4;
   border-radius: 4px;
   -webkit-transition: border .2s ease-in-out;
        -o-transition: border .2s ease-in-out;
@@ -6758,28 +6758,32 @@ button.close {
   }
 }
 /*# sourceMappingURL=bootstrap.css.map */
-#statusWarning p{
-  color: #fff;
-  background-color: #d9534f;
-  border-color: #d43f3a;
-  border-radius: 3px;
-  text-align: center;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  margin-top: -5px;
-  margin-bottom: -5px;
+#statusWarning p {
+    color: rgb(226, 2, 2);
 }
 #statusValid p {
-  color: #fff;
-  background-color: #5cb85c;
-  border-color: #4cae4c;
-  border-radius: 3px;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  margin-top: -5px;
-  margin-bottom: -5px;
+    color: rgb(71, 198, 7);
 }
 
 #chapters{
   text-align: justify;
+}
+.card{
+ margin-top: 10px;
+ min-width: 0;
+ word-wrap: break-word;
+ background-color: #639bb4;
+ background-clip: border-box;
+ border: 1px solid rgba(0,0,0,.125);
+ border-radius: .25rem;
+}
+.card-header{
+  padding: .75rem 1.25rem;
+  margin-top: -2.5px;
+  margin-bottom: 0;
+  background-color: rgba(0,0,0,.03);
+  border-bottom: 1px solid rgba(0,0,0,.125);
+}
+.card-body{
+ padding: 1.25rem;
 }

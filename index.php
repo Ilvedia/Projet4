@@ -64,7 +64,7 @@ try {
             if(isset($_SESSION['userLevel']) && $_SESSION['userLevel'] == 'admin'){
                 require('view/backend/adminPanelView.php');
             }else{
-                throw new Exception($accessdenied);
+                throw new Exception($accesdenied);
             }
         }
         //vers la page d'ecriture d'un article
@@ -106,7 +106,7 @@ try {
         //validation de l'edition du chapitre
         elseif($_GET['action'] == 'editPost'){
             if(isset($_SESSION['userLevel']) && $_SESSION['userLevel'] == 'admin'){
-                if (isset($_GET['id']) && $_GET['id'] > 0){
+                if (isset($_GET['id']) && ($_GET['id'] > 0)){
                     editPost($_GET['id'], $_POST['title'], $_POST['content']);
                 }else{
                     throw new Exception('Aucun id d\'article');
@@ -152,6 +152,31 @@ try {
                 throw new Exception('Aucun identifiant de commentaire envoyé');
             }
         }
+        //validation de l'edition de commentaire
+        elseif($_GET['action'] == 'editComment'){
+            if(isset($_SESSION['userLevel']) && $_SESSION['userLevel'] == 'admin'){
+                if (isset($_GET['id']) && $_GET['id'] > 0){
+                    editCom($_GET['id'], $_POST['comment'], $_POST['status']);
+                }else{
+                    throw new Exception('Aucun id de commentaire');
+                }
+            }else{
+                throw new Exception($accesdenied);
+            }
+        }
+
+        //Suppression d'un commentaire
+        elseif($_GET['action'] == 'deleteComment'){
+            if(isset($_SESSION['userLevel']) && $_SESSION['userLevel'] == 'admin'){
+                if(isset($_GET['id']) && $_GET['id'] > 0){
+                    deleteCom($_GET['id']);
+                }else{
+                    throw new Exception('Aucun id de chapitre');
+                }
+            }else{
+                throw new Exception($accesdenied);
+            }
+        }
 
         //vers la page de gestion des membres
         elseif($_GET['action'] == 'manageUsers'){
@@ -188,7 +213,7 @@ catch(Exception $e) {
     ?>
 
     <div id="errorPage">
-        <p><?php  echo 'Erreur : ' . $e->getMessage(); ?></p>
+        <p><?php  echo 'Erreur : ' . $accesdenied; ?></p>
         <p>Retour à <a href="index.php">l'accueil</a></p>
     </div>
 

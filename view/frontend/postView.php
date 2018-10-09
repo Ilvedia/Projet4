@@ -21,7 +21,7 @@
 if(isset($_SESSION['pseudo']))
 {
     ?>
-    <!--FORMULAIRE D'ENVOI DE COMMENTAIRE SI USER CONNECTER-->
+    <!--FORMULAIRE D'ENVOI DE COMMENTAIRE SI USER CONNECTE-->
     <form action="index.php?action=addComment&amp;id=<?= $post['id'] ?>" method="post">
         <!-- Comments Form -->
         <div>
