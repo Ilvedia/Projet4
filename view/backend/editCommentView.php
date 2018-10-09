@@ -9,7 +9,7 @@ ob_start(); ?>
         </div>
         <div class="form-group">
             <label>Contenu du commentaire</label><br>
-            <textarea id="postContent" name="comment" class="form-control" rows="10"><?php echo $comment['comment']; ?></textarea>
+            <input type="varchar" id="postComment" name="comment" class="form-control" value="<?php echo $comment['comment']; ?>" required>
         </div>
         <div class="form-group">
             <label for="status">Statut du commentaire</label>
