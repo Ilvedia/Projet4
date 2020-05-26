@@ -4,7 +4,7 @@ class Manager
 {
     protected function dbConnect()
     {
-        $db = new PDO('mysql:host=localhost;dbname=project;charset=utf8', 'root', '');
+        $db = new PDO('mysql:host=xxxxxxxxxxx;dbname=xxxxxxxxxxx;charset=utf8', 'xxxxxxxxxxxx', 'xxxxxxxxxxxxx');
         return $db;
     }
 }
